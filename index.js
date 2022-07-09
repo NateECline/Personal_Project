@@ -29,7 +29,7 @@ class Player {
     constructor (name) {
         this.name = name;
         this.hand = [];
-        this.score = 0
+        this.score = 0;
     }
 }
 
@@ -52,10 +52,7 @@ class StartGame {
         let list = this.deck.deckOfCards;
         let half = Math.ceil(list.length / 2);
         
-        for(let i=list.length;i>0;i--){
-            this.players[0].hand=list.pop()
-            this.players[1].hand=list.pop()
-        }
+       
     }     
     
     displayWinner(score) {
@@ -71,7 +68,7 @@ class StartGame {
         let playersScore = [];
     
         for (let i = 0; i < 26; i++) {
-            if(this.players[0].hand[i].value>this.players[1].hand[i].value){
+            if(player1.hand[i].value > player2.hand[i].value){
                 console.log('Player 1 has greater value.')
             } else if(player1.hand[i].value<player2.hand[i].value){
                 console.log('Player 2 has greater value.')
