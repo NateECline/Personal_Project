@@ -5,7 +5,6 @@ class Card {
         this.value = value;
     }
 }
-
 class Deck {
     constructor () {
         this.deckOfCards = [];
@@ -24,9 +23,7 @@ class Deck {
         }
     }
 }
-
 let newDeck = new Deck();
-console.log(newDeck);
 
 class Player {
     constructor (name) {
@@ -36,7 +33,6 @@ class Player {
     }
 }
 
-
 class StartGame {
     constructor(deck, players) {
         this.deck = deck;
@@ -44,10 +40,10 @@ class StartGame {
     }
 
     shuffleCards() {
-        for (i = this.deck.deckOfCards.length - 1; i > 0; i--){
+        for (let i = this.deck.deckOfCards.length - 1; i > 0; i--){
             let z = Math.floor(Math.random() * i);
             let temp = this.deck.deckOfCards[i];
-            this.deck.deckOfCards[i] = this.deck.deckOfCards[i];
+            this.deck.deckOfCards[i] = this.deck.deckOfCards[z];
             this.deck.deckOfCards[z] =temp;
         }
     }
@@ -55,42 +51,51 @@ class StartGame {
     dealCards() {
         let list = this.deck.deckOfCards;
         let half = Math.ceil(list.length / 2);
-
+        
+        for(let i=list.length;i>0;i--){
+            this.players[0].hand=list.pop()
+            this.players[1].hand=list.pop()
+        }
     }     
     
     displayWinner(score) {
         if (score[0] > score[1]) {
-            
-     } 
-
+            console.log('Player 1 wins!')
+        } else{
+            console.log('Player 2 wins!')
+        }
+    }
     compareCards() {
         let player1Score = 0;
         let player2Score = 0;
         let playersScore = [];
-
-    for (let i = 0; i < this.players[0].hand.length; i++) {
-        
+    
+        for (let i = 0; i < 26; i++) {
+            if(this.players[0].hand[i].value>this.players[1].hand[i].value){
+                console.log('Player 1 has greater value.')
+            } else if(player1.hand[i].value<player2.hand[i].value){
+                console.log('Player 2 has greater value.')
+            } else{
+                console.log('It is a tie.')
+            }
         }
-
-    }
     playersScore.push(player1Score, player2Score) 
         return playersScore;
-}
-        
-    
+    }
 }
 
+
 let fullDeck = new Deck();
-let player1 = new Player("Happy");
-let player2 = new Player("Ruby");
-let score 
+let player1 = new Player("Das");
+let player2 = new Player("Pownin");
+let score
 
 console.log(player1);
 console.log(player2);
 
-const 
+let startGame=new StartGame(fullDeck,[player1, player2])
 
-game.shuffleCards();
-game.dealCards();
-score = game.compareCards();
-game.displayWinner(score);
+startGame.shuffleCards();
+startGame.dealCards();
+score = startGame.compareCards();
+startGame.displayWinner(score);
