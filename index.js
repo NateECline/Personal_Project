@@ -52,7 +52,10 @@ class StartGame {
         let list = this.deck.deckOfCards;
         let half = Math.ceil(list.length / 2);
         
-       
+        
+            this.players[0].hand=list.pop()
+            this.players[1].hand=list.pop()
+        
     }     
     
     displayWinner(score) {
@@ -62,23 +65,23 @@ class StartGame {
             console.log('Player 2 wins!')
         }
     }
-    compareCards() {
-        let player1Score = 0;
-        let player2Score = 0;
-        let playersScore = [];
+    compareCards(){
+        let player1Score = 0
+        let player2Score = 0
+        let playersScore = []
     
-        for (let i = 0; i < 26; i++) {
-            if(player1.hand[i].value > player2.hand[i].value){
-                console.log('Player 1 has greater value.')
-            } else if(player1.hand[i].value<player2.hand[i].value){
-                console.log('Player 2 has greater value.')
-            } else{
-                console.log('It is a tie.')
-            }
+        if(this.players[0].hand.value > this.players[1].hand.value){
+            console.log('Player 1 has greater value.')
+        } else if(this.players[0].hand.value < this.players[1].hand.value){
+            console.log('Player 2 has greater value.')
+        } else{
+            console.log('It is a tie.')
         }
-    playersScore.push(player1Score, player2Score) 
+
+        playersScore.push(player1Score, player2Score)
+
         return playersScore;
-    }
+}
 }
 
 
