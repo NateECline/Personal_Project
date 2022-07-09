@@ -1,1 +1,1 @@
-console.log("wat le fuk is up")
+console.log("Nothing")
