@@ -1,131 +1,58 @@
-class Card {
-    constructor (suit, rank, value) {
-        this.suit = suit;
-        this.rank = rank;
-        this.value = value;
+class Game{
+    constructor(name){
+        this.name = name
     }
 }
-class Deck {
-    constructor () {
-        this.deckOfCards = [];
-        this.createHand();
+class Menu{
+    constructor(){
+        this.games = []
+        this.selectedGames = null
     }
-
-    createHand() {
-        const suits = ['Hearts', 'Spades', 'Diamonds', 'Clubs'];
-        let ranks = [ '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
-        let values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-
-        for (let i = 0; i < suits.length; i++) {
-            for (let j = 0; j < ranks.length; j++) {
-                    this.deckOfCards.push(new Card(suits[i], ranks[j], values[j]));
+    start(){
+        let selection = this.showMainMenuOptions()
+        while(selection!=0){
+            switch(selection){
+                case `1`:
+                this.createGame()
+                break
+                case `2`:
+                this.deleteGame()
+                break
+                case `3`:
+                this.displayGame()
+                break
+                default:
+                selection = 0
             }
+            selection=this.showMainMenuOptions()
+        }
+     alert(`Goobye Bich`)
+    }
+    showMainMenuOptions(){
+        return prompt(`
+        0) Exit
+        1) Create Game
+        2) Delete Game
+        3) Display Games
+        `)
+    }
+    displayGame(){
+        let gameString = ``
+        for(let i=0;i<this.games.length;i++){
+            gameString+=i+`) `+this.games[i].name+`\n`
+        }
+        alert(gameString)
+    }
+    createGame(){
+        let name = prompt(`Enter thy game`)
+        this.games.push(new Game(name))
+    }
+    deleteGame(){
+        let index = prompt(`what will be removed from existence?`)
+        if(index>=0&&index<this.games.length){
+            this.games.splice(index,1)
         }
     }
-}
-let newDeck = new Deck();
-
-class Player {
-    constructor (name) {
-        this.name = name;
-        this.hand = [];
-        this.score = 0;
-    }
-}
-class StartGame {
-    constructor(deck, players) {
-        this.deck = deck;
-        this.players = players;
-    }
-
-    shuffleCards() {
-        for (let i = this.deck.deckOfCards.length - 1; i > 0; i--){
-            let z = Math.floor(Math.random() * i);
-            let temp = this.deck.deckOfCards[i];
-            this.deck.deckOfCards[i] = this.deck.deckOfCards[z];
-            this.deck.deckOfCards[z] =temp;
-        }
-    }
-    
-    dealCards() {
-        let list = this.deck.deckOfCards;
-        let half = Math.ceil(list.length / 2);
-<<<<<<< HEAD
-=======
-        
->>>>>>> 756cde1ab19cf71724f399aeafbe463269f4ee4a
-        
-            for(let i=26;i>0;i--){
-            this.players[0].hand=list.pop()
-            this.players[1].hand=list.pop()
-            }
-    }     
-    
-    displayWinner(score) {
-        if (score[0] > score[1]) {
-            console.log('Player 1 wins!')
-        } else{
-            console.log('Player 2 wins!')
-        }
-    }
-    compareCards(){
-        let player1Score = 0
-        let player2Score = 0
-        let playersScore = []
-<<<<<<< HEAD
-        
-        
-        if(this.players[0].hand.value > this.players[1].hand.value){
-            console.log(`Player 1 has greater value.
-            Player 1: ${this.players[0].hand.suit} of ${this.players[0].hand.rank}
-            Player 2: ${this.players[1].hand.suit} of ${this.players[1].hand.rank}
-
-             `)
-        } else if(this.players[0].hand.value < this.players[1].hand.value){
-            console.log(`Player 2 has greater value.
-            Player 1: ${this.players[0].hand.suit} of ${this.players[0].hand.rank}
-            Player 2: ${this.players[1].hand.suit} of ${this.players[1].hand.rank}
-            `)
-        } else{
-            console.log(`It is a tie. 
-            Player 1: ${this.players[0].hand.suit} of ${this.players[0].hand.rank}
-            Player 2: ${this.players[1].hand.suit} of ${this.players[1].hand.rank}`)
-        }
-       
-=======
-    
-        if(this.players[0].hand.value > this.players[1].hand.value){
-            console.log('Player 1 has greater value.')
-        } else if(this.players[0].hand.value < this.players[1].hand.value){
-            console.log('Player 2 has greater value.')
-        } else{
-            console.log('It is a tie.')
-        }
-
->>>>>>> 756cde1ab19cf71724f399aeafbe463269f4ee4a
-        playersScore.push(player1Score, player2Score)
-
-        return playersScore;
-}
-}
-
-
-let fullDeck = new Deck();
-<<<<<<< HEAD
-let player1 = new Player(`Das`);
-let player2 = new Player(`Pownin`);
-=======
-let player1 = new Player("Das");
-let player2 = new Player("Pownin");
->>>>>>> 756cde1ab19cf71724f399aeafbe463269f4ee4a
-let score
-
-console.log(player1);
-console.log(player2);
-
-let startGame=new StartGame(fullDeck,[player1, player2])
-
-startGame.shuffleCards();
-startGame.dealCards();
-score = startGame.compareCards();
-startGame.displayWinner(score);
+ }
+ let menu = new Menu()
+ menu.start()
