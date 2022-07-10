@@ -50,6 +50,10 @@ class StartGame {
     dealCards() {
         let list = this.deck.deckOfCards;
         let half = Math.ceil(list.length / 2);
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 756cde1ab19cf71724f399aeafbe463269f4ee4a
         
             for(let i=26;i>0;i--){
             this.players[0].hand=list.pop()
@@ -68,6 +72,7 @@ class StartGame {
         let player1Score = 0
         let player2Score = 0
         let playersScore = []
+<<<<<<< HEAD
         
         
         if(this.players[0].hand.value > this.players[1].hand.value){
@@ -87,16 +92,32 @@ class StartGame {
             Player 2: ${this.players[1].hand.suit} of ${this.players[1].hand.rank}`)
         }
        
+=======
+    
+        if(this.players[0].hand.value > this.players[1].hand.value){
+            console.log('Player 1 has greater value.')
+        } else if(this.players[0].hand.value < this.players[1].hand.value){
+            console.log('Player 2 has greater value.')
+        } else{
+            console.log('It is a tie.')
+        }
+
+>>>>>>> 756cde1ab19cf71724f399aeafbe463269f4ee4a
         playersScore.push(player1Score, player2Score)
 
         return playersScore;
-    }
+}
 }
 
 
 let fullDeck = new Deck();
+<<<<<<< HEAD
 let player1 = new Player(`Das`);
 let player2 = new Player(`Pownin`);
+=======
+let player1 = new Player("Das");
+let player2 = new Player("Pownin");
+>>>>>>> 756cde1ab19cf71724f399aeafbe463269f4ee4a
 let score
 
 console.log(player1);
