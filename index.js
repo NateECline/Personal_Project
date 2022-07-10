@@ -49,7 +49,6 @@ class StartGame {
 
     dealCards() {
         let list = this.deck.deckOfCards;
-        let half = Math.ceil(list.length / 2);
 
             for(let i=26;i>0;i--){
             this.players[0].hand=list.pop()
@@ -57,11 +56,13 @@ class StartGame {
             }
     }
 
-    displayWinner(score) {
+    displayWinner() {
         if (score[0] > score[1]) {
-            console.log('Player 1 wins!')
+            console.log(`${this.players[0].name} wins!`)
+        } else if(score[0] < score[1]){
+            console.log(`${this.players[1].name} wins!`)
         } else{
-            console.log('Player 2 wins!')
+            console.log(`Tie. No one wins now.`)
         }
     }
     compareCards(){
@@ -69,26 +70,27 @@ class StartGame {
         let player2Score = 0
         let playersScore = []
 
-
+        for(let i=1;i<27;i++){
         if(this.players[0].hand.value > this.players[1].hand.value){
-            console.log(`Player 1 has greater value.
-            Player 1: ${this.players[0].hand.suit} of ${this.players[0].hand.rank}
-            Player 2: ${this.players[1].hand.suit} of ${this.players[1].hand.rank}
-
-             `)
+            player1Score++
+            console.log(`Round ${i}:
+            ${this.players[0].name} has greater value.
+            ${this.players[0].name}: ${this.players[0].hand.suit} of ${this.players[0].hand.rank} score: ${player1Score}
+            ${this.players[1].name}: ${this.players[1].hand.suit} of ${this.players[1].hand.rank} score: ${player2Score}`)
         } else if(this.players[0].hand.value < this.players[1].hand.value){
-            console.log(`Player 2 has greater value.
-            Player 1: ${this.players[0].hand.suit} of ${this.players[0].hand.rank}
-            Player 2: ${this.players[1].hand.suit} of ${this.players[1].hand.rank}
-            `)
+            player2Score++
+            console.log(`Round ${i}:
+            ${this.players[1].name} has greater value.
+            ${this.players[0].name}: ${this.players[0].hand.suit} of ${this.players[0].hand.rank} score: ${player1Score}
+            ${this.players[1].name}: ${this.players[1].hand.suit} of ${this.players[1].hand.rank} score: ${player2Score}`)
         } else{
-            console.log(`It is a tie. 
-            Player 1: ${this.players[0].hand.suit} of ${this.players[0].hand.rank}
-            Player 2: ${this.players[1].hand.suit} of ${this.players[1].hand.rank}`)
-        }
+            console.log(`Round ${i}:
+            It is a tie. 
+            ${this.players[1].name}: ${this.players[0].hand.suit} of ${this.players[0].hand.rank} score: ${player1Score}
+            ${this.players[1].name}: ${this.players[1].hand.suit} of ${this.players[1].hand.rank} score: ${player1Score}`)
+        }}
 
         playersScore.push(player1Score, player2Score)
-
         return playersScore;
     }
 }
@@ -97,7 +99,6 @@ class StartGame {
 let fullDeck = new Deck();
 let player1 = new Player(`Das`);
 let player2 = new Player(`Pownin`);
-let score
 
 console.log(player1);
 console.log(player2);
