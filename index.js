@@ -49,10 +49,11 @@ class StartGame {
 
     dealCards() {
         let list = this.deck.deckOfCards;
+        
 
             for(let i=26;i>0;i--){
-            this.players[0].push.hand.list.pop()
-            this.players[1].push.hand.list.pop()
+            this.players[0].hand[i]=list.pop()
+            this.players[1].hand[i]=list.pop()
             }
     }
 
@@ -70,24 +71,24 @@ class StartGame {
         let player2Score = 0
         let playersScore = []
 
-        for(let i=1;i<27;i++){
+        for(let i=1;i<=26;i++){
         if(this.players[0].hand[i].value > this.players[1].hand[i].value){
             player1Score++
             console.log(`Round ${i}:
             ${this.players[0].name} has greater value.
-            ${this.players[0].name}: ${this.players[0].hand.suit} of ${this.players[0].hand.rank} score: ${player1Score}
-            ${this.players[1].name}: ${this.players[1].hand.suit} of ${this.players[1].hand.rank} score: ${player2Score}`)
-        } else if(this.players[0].hand.value < this.players[1].hand.value){
+            ${this.players[0].name}: ${this.players[0].hand[i].suit} of ${this.players[0].hand[i].rank} score: ${player1Score}
+            ${this.players[1].name}: ${this.players[1].hand[i].suit} of ${this.players[1].hand[i].rank} score: ${player2Score}`)
+        } else if(this.players[0].hand[i].value < this.players[1].hand[i].value){
             player2Score++
             console.log(`Round ${i}:
             ${this.players[1].name} has greater value.
-            ${this.players[0].name}: ${this.players[0].hand.suit} of ${this.players[0].hand.rank} score: ${player1Score}
-            ${this.players[1].name}: ${this.players[1].hand.suit} of ${this.players[1].hand.rank} score: ${player2Score}`)
+            ${this.players[0].name}: ${this.players[0].hand[i].suit} of ${this.players[0].hand[i].rank} score: ${player1Score}
+            ${this.players[1].name}: ${this.players[1].hand[i].suit} of ${this.players[1].hand[i].rank} score: ${player2Score}`)
         } else{
             console.log(`Round ${i}:
             It is a tie. 
-            ${this.players[1].name}: ${this.players[0].hand.suit} of ${this.players[0].hand.rank} score: ${player1Score}
-            ${this.players[1].name}: ${this.players[1].hand.suit} of ${this.players[1].hand.rank} score: ${player1Score}`)
+            ${this.players[0].name}: ${this.players[0].hand[i].suit} of ${this.players[0].hand[i].rank} score: ${player1Score}
+            ${this.players[1].name}: ${this.players[1].hand[i].suit} of ${this.players[1].hand[i].rank} score: ${player1Score}`)
         }}
 
         playersScore.push(player1Score, player2Score)
