@@ -51,8 +51,8 @@ class StartGame {
         let list = this.deck.deckOfCards;
 
             for(let i=26;i>0;i--){
-            this.players[0].hand=list.pop()
-            this.players[1].hand=list.pop()
+            this.players[0].push.hand.list.pop()
+            this.players[1].push.hand.list.pop()
             }
     }
 
@@ -71,7 +71,7 @@ class StartGame {
         let playersScore = []
 
         for(let i=1;i<27;i++){
-        if(this.players[0].hand.value > this.players[1].hand.value){
+        if(this.players[0].hand[i].value > this.players[1].hand[i].value){
             player1Score++
             console.log(`Round ${i}:
             ${this.players[0].name} has greater value.
